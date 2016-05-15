@@ -8,11 +8,11 @@ import ssl
 from bs4 import BeautifulSoup
 arr=[]
 ###reading input file
-with open('codechef.csv', 'rb') as csvfile:
+with open('input.csv', 'rb') as csvfile:
 	reader = csv.DictReader(csvfile)
 	for row in reader:
 		print row['CodeChef handle']
-		arr=arr+[[row['CodeChef handle'],row['Year']]]
+		arr=arr+[[row['CodeChef handle']]]
 
 #arr=[['kripa432','3rd year'],['shubhmsng','3rd year'],['ajay532','3rd year'],['avmnusng','3rd year']]
 #arr=['500']
@@ -25,8 +25,8 @@ http = urllib3.PoolManager(cert_reqs='CERT_REQUIRED', ca_certs=certifi.where())
 #	print "error"
 #html=r.data
 ##opening writing file
-with open('Programmers of IERT.csv', 'w') as csvfile:
-	fieldnames = ['handle', 'Year','Problems Solved','Problems Partially Solved','Solutions Submitted','Solutions Partially Accepted','Solutions Accepted','WA','CTE','RTE','TLE']
+with open('output.csv', 'w') as csvfile:
+	fieldnames = ['handle','Problems Solved','Problems Partially Solved','Solutions Submitted','Solutions Partially Accepted','Solutions Accepted','WA','CTE','RTE','TLE']
 	writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 	writer.writeheader()
 	for i in arr:
@@ -76,5 +76,5 @@ with open('Programmers of IERT.csv', 'w') as csvfile:
 ##writing output file
 	
 		
-		writer.writerow({'handle':i[0],'Year':i[1], 'Problems Solved':ps ,'Problems Partially Solved':pps,'Solutions Submitted':ss,'Solutions Partially Accepted':spa,'Solutions Accepted':sa,'WA':wa,'CTE':cte,'RTE':rte,'TLE':tle})
+		writer.writerow({'handle':i[0], 'Problems Solved':ps ,'Problems Partially Solved':pps,'Solutions Submitted':ss,'Solutions Partially Accepted':spa,'Solutions Accepted':sa,'WA':wa,'CTE':cte,'RTE':rte,'TLE':tle})
 	
